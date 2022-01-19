@@ -1,0 +1,15 @@
+HTTrack3.49-2+htsswf+htsjava launched on Thu, 06 Jan 2022 19:21:57 at https://www.hsgadvisory.com/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qiC2%Pns2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://www.hsgadvisory.com/ -O1 "C:\My Web Sites\Magma" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+19:22:00	Error: 	"Bad Gateway" (502) after 2 retries at link https://www.hsgadvisory.com/robots.txt (from primary/primary)
+19:24:56	Warning: 	Retry after error 502 (Bad Gateway) at link https://www.hsgadvisory.com/privacy-policy (from https://www.hsgadvisory.com/)
+19:30:42	Warning: 	Retry after error 502 (Bad Gateway) at link https://www.hsgadvisory.com/privacy-policy (from https://www.hsgadvisory.com/)
+19:30:42	Error: 	"Bad Gateway" (502) after 2 retries at link https://www.hsgadvisory.com/privacy-policy (from https://www.hsgadvisory.com/)
+
+HTTrack Website Copier/3.49-2 mirror complete in 8 minutes 45 seconds : 57 links scanned, 53 files written (12481296 bytes overall), 7 files updated [56475 bytes received at 107 bytes/sec], 100243 bytes transferred using HTTP compression in 7 files, ratio 28%, 1.2 requests per connection
+(2 errors, 2 warnings, 0 messages)
