@@ -281,102 +281,58 @@
     <section id="cards-section" class="cards-section-2 wf-section">
       <div class="centered-container w-container">
         <div class="cards-grid-container-2" id="teams-render">
-          <div id="w-node-_5b54e279-c185-26aa-52db-789617e5b18a-c261bcde">
-            <div class="cards-image-mask-2">
-              <img
-                src="uploads-ssl.webflow.com/5fec9cbd559a42ec579e8c62/team/Akshat Biyani.jpg"
-                alt=""
-                class="cards-image writer-image"
-              />
-            </div>
-            <h3 class="writer-name">Akshat Biyani</h3>
-            <p class="writer-bio">
-               Akshat is an editor and former business analyst. He founded Magma in January 2021.
-              <br />
-            </p>
-          </div>
-          <div id="w-node-_5b54e279-c185-26aa-52db-789617e5b191-c261bcde">
-            <div class="cards-image-mask-2">
-              <img
-                src="uploads-ssl.webflow.com/5fec9cbd559a42ec579e8c62/team/Srijan Poudel.jpg"
-                class="cards-image writer-image"
-              />
-            </div>
-            <h3
-              id="w-node-_5b54e279-c185-26aa-52db-789617e5b194-c261bcde"
-              class="writer-name"
-            >
-            Srijan Poudel
-            </h3>
-            <p
-              id="w-node-_5b54e279-c185-26aa-52db-789617e5b196-c261bcde"
-              class="writer-bio"
-            >
-            Srijan is the project manager. He ensures each project is being completed on time.<br />
-            </p>
-          </div>
-          <div id="w-node-_67c6d51c-77c8-9a79-d7d3-0551820e79df-c261bcde">
-            <div class="cards-image-mask-2">
-              <img
-                src="uploads-ssl.webflow.com/5fec9cbd559a42ec579e8c62/team/Anand.jpg"
-                alt=""
-                class="cards-image writer-image"
-              />
-            </div>
-            <h3 class="writer-name">Anand Singh</h3>
-            <p class="writer-bio">
-              Anand is a writer with a bent for creative writing. He works across Magma’s clients.
-            </p>
-          </div>
-          <div id="w-node-_0bec029a-7122-8b9e-0908-d8b96c260f5b-c261bcde">
-            <div class="cards-image-mask-2">
-              <img
-                src="uploads-ssl.webflow.com/5fec9cbd559a42ec579e8c62/team/Rhidha Bali.jpeg"
-                class="cards-image writer-image"
-              />
-            </div>
-            <h3 class="writer-name">Rhidha Bali</h3>
-            <p class="writer-bio">
-              Rhidha prefers to focus on business writing and works with our American clients.
-              <br />
-            </p>
-          </div>
-          <div id="w-node-_5b54e279-c185-26aa-52db-789617e5b198-c261bcde">
-            <div class="cards-image-mask-2">
-              <img
-                src="uploads-ssl.webflow.com/5fec9cbd559a42ec579e8c62/team/Kareena Rajani.jpg"
-                alt=""
-                class="cards-image writer-image"
-              />
-            </div>
-            <h3
-              id="w-node-_5b54e279-c185-26aa-52db-789617e5b19b-c261bcde"
-              class="writer-name"
-            >
-            Kareena Rajani
+          <script type="text/javascript">
 
-            </h3>
-            <p
-              id="w-node-_5b54e279-c185-26aa-52db-789617e5b19d-c261bcde"
-              class="writer-bio"
-            >
-            Kareena is a freelance writer and a doctor. She focuses on medical clients but is open to exploring other fields.<br
-              /></strong>
-            </p>
-          </div>
-          <div id="w-node-_858b4985-0a55-8d66-03fc-87b59865a0e3-c261bcde">
-            <div class="cards-image-mask-2">
-              <img
-                src="uploads-ssl.webflow.com/5fec9cbd559a42ec579e8c62/team/Vikrant.png"
-                class="cards-image writer-image"
-              />
-            </div>
-            <h3 class="writer-name">Vikrant Reddy</h3>
-            <p class="writer-bio">
-              Vikrant is a developer and automation expert. He helps us with all things tech.
-            </p>
-          </div>
+            function createArticle(name, desc, url) {
 
+              const article = document.createElement('div');
+              article.id = "w-node-_5b54e279-c185-26aa-52db-789617e5b191-c261bcde"
+
+              const articleimg = document.createElement('div');
+              articleimg.classList.add("cards-image-mask-2")
+              const imgitem = document.createElement('img')
+              imgitem.src = `uploads-ssl.webflow.com/5fec9cbd559a42ec579e8c62/team/${name}.jpg`
+              imgitem.classList.add("cards-image","writer-image")
+              articleimg.appendChild(imgitem)
+              
+
+              const title = document.createElement('h3')
+              title.style.textAlign = "center"
+              title.innerText = name
+              title.classList.add("writer-name")
+
+              const description = document.createElement('p')
+              description.classList.add("writer-bio")
+              description.style.fontSize = "large"
+              description.innerText = desc
+
+              article.appendChild(articleimg)
+              article.appendChild(title)
+              article.appendChild(description)
+
+              document.getElementById("teams-render").appendChild(article)
+            }
+
+            var id = "1AdOSyD-5gWSJJbdF-In1Bzvh5rHngiQLQMpW5gHep8U";
+            var gid = "1828385863";
+            var url =
+              "https://docs.google.com/spreadsheets/d/" +
+              id +
+              "/gviz/tq?tqx=out:json&tq&gid=" +
+              gid;
+            fetch(url)
+              .then((response) => response.text())
+              .then((data) => {
+                var contents = JSON.parse(data.substring(47).slice(0, -2))["table"]["rows"];
+                console.log(contents)
+                for (var content of contents) {
+                  createArticle(content["c"][0]["v"], content["c"][1]["v"],content["c"][2]["v"])
+                }
+              });
+
+
+          </script>
+          
           <!-- <div
             id="w-node-c6a84f2c-99d2-718a-7fc6-014f9a8b2925-c261bcde"
             class="innerblock"
