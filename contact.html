@@ -382,13 +382,54 @@
                           class="w-input"
                         ></textarea>
                       </div>
+                      <label for="Captcha" id="contact-captcha"
+                        >Solve Captcha for Submit Button : What is
+                      </label>
+
+                      <input
+                      id="captcha-answer"
+                      required=""
+                      ></input>
                     </div>
                     <input
                       type="submit"
                       value="Send"
                       data-wait="Please wait..."
                       class="button w-button"
+                      id="submit"
+                      style="display:None"
                     />
+                    <script type="text/javascript">
+                      document.getElementById(
+                        "contact-captcha"
+                      ).innerText += ` ${Math.floor(
+                        Math.random() * 10
+                      )}+${Math.floor(Math.random() * 10)}`;   
+                      
+                      document.getElementById(
+                        "captcha-answer"
+                      ).onkeypress = function(evt){
+
+                        setTimeout(function(){
+                        var givenAns = document.getElementById("captcha-answer").value
+                        var actualAns = document.getElementById("contact-captcha").innerText
+
+                        function getSum(total, num) {
+                          return total + Math.round(num);
+                        }
+                        
+                        actualAns = actualAns.match(/\d/g);
+                        actualAns = actualAns.reduce(getSum, 0);
+
+                        if(actualAns == givenAns){
+                          document.getElementById("submit").style.display = "block";
+                        }
+                        else{
+                          document.getElementById("submit").style.display = "none";
+                        }
+                        },200)
+                      }
+                    </script>
                   </form>
                   <div class="w-form-done">
                     <div>Thank you! Your submission has been received!</div>
