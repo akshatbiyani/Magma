@@ -69,16 +69,18 @@
         '{{wf {"path":"symbol","type":"PlainText"} }} {{wf {"path":"amount","type":"CommercePrice"} }} {{wf {"path":"currencyCode","type":"PlainText"} }}',
       hideDecimalForWholeNumbers: false,
     };
-    const rows = ["articlesrow", "designsrow"]
+    const rows = [["articlesrow", "articlebutton"], ["designsrow", "designbutton"]]
 
     function filter(index) {
-      document.getElementById(rows[index]).style.display = "";
+      document.getElementById(rows[index][0]).style.display = "";
+      document.getElementById(rows[index][1]).style.opacity = "0.8";
       if (index == 0) {
         index = 1
       } else {
         index = 0
       }
-      document.getElementById(rows[index]).style.display = "none";
+      document.getElementById(rows[index][0]).style.display = "none";
+      document.getElementById(rows[index][1]).style.opacity = "1";
     }
   </script>
   <style>
@@ -95,7 +97,8 @@
     }
 
     .filterButton {
-      padding: 1rem 2rem;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem;
       background-color: #dc3545;
       color: white;
     }
@@ -159,7 +162,10 @@
                       </div>
                     </div>
                   </div>
-                  <a href="team.html" class="mobile-menu-link">Who we are</a><a href="https://www.linkedin.com/company/magma-consultancy/" class="mobile-menu-link">Join the team</a><a href="contact.html" class="mobile-menu-link last">Get in touch</a>
+                  <a href="team.html" class="mobile-menu-link">Who we are</a>
+                  <a href="https://www.linkedin.com/company/magma-consultancy/" class="mobile-menu-link">Join the team</a>
+                  <a href="samples.html" class="mobile-menu-link">Samples</a>
+                  <a href="contact.html" class="mobile-menu-link last">Get in touch</a>
                 </div>
               </div>
             </div>
@@ -176,7 +182,7 @@
             Magma Consultancy is a content consultancy.
           </h1>
           <h1 class="hero-header-main display-heading-one">
-            We create irresistible content for the world's most exciting companies!
+            Click the logos to see our samples
           </h1>
           <a href="contact.html" class="button-link-text button-link hero-button-link">Get in touch →</a>
         </div>
@@ -268,18 +274,16 @@
       <section id="portfolio" class="portfolio section-bg">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
-            <h2>Published Samples</h2>
           </div>
           <div class="row">
             <div class="col-md-6">
-              <button class="filterButton" onclick="filter(0)">Articles</button>
+              <button class="filterButton" id="articlebutton" style="opacity: 0.8" onclick="filter(0)">View Articles</button>
             </div>
             <div class="col-md-6">
-              <button class="filterButton" onclick="filter(1)">Designs</button>
+              <button class="filterButton" id="designbutton" onclick="filter(1)">View Designs</button>
             </div>
           </div>
           <div id="articlesrow" class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-            <h3> Articles </h3>
             <script type="text/javascript">
               function createArticle(name, url) {
                 const article = document.createElement("div");
@@ -336,7 +340,6 @@
           </div>
 
           <div id="designsrow" class="row portfolio-container" style="display:none" data-aos="fade-up" data-aos-delay="200">
-            <h3> Designs </h3>
             <script type="text/javascript">
               function createDesign(name, url) {
                 const design = document.createElement("div");
@@ -353,7 +356,7 @@
                 designimg.style.backgroundColor = "#113038";
                 designimg.style.height = "150px"
                 designimg.style.width = "270px"
-                designimg.style.margin = "10px 10px";
+                designimg.style.margin = "10px auto";
                 designimg.style.padding = "20px 20px";
                 designimg.style.display = "flex";
                 designimg.style.justifyContent = "center";
@@ -419,7 +422,10 @@
         </div>
         <div id="w-node-_707d90c7-335e-17b1-5229-1a1c1a517ecb-2de187ea" class="footer-cell">
           <div class="footer-menu">
-            <a href="index.html" aria-current="page" class="footer-link first-child w--current">Home</a><a href="what-we-do.html" class="footer-link">Our services</a><a href="team.html" class="footer-link">Team</a><a href="contact.html" class="footer-link">Get in touch</a><a href="careers.html" class="footer-link last-child">Careers</a>
+            <a href="index.html" aria-current="page" class="footer-link first-child w--current">Home</a>
+            <a href="what-we-do.html" class="footer-link">Our services</a><a href="team.html" class="footer-link">Team</a><a href="contact.html" class="footer-link">Get in touch</a>
+            <a href="samples.html" class="footer-link">Samples</a>
+            <a href="careers.html" class="footer-link last-child">Careers</a>
           </div>
         </div>
       </div>
