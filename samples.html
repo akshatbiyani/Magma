@@ -69,18 +69,25 @@
         '{{wf {"path":"symbol","type":"PlainText"} }} {{wf {"path":"amount","type":"CommercePrice"} }} {{wf {"path":"currencyCode","type":"PlainText"} }}',
       hideDecimalForWholeNumbers: false,
     };
-    const rows = [["articlesrow", "articlebutton"], ["designsrow", "designbutton"]]
+    const rows = [["articlesrow", "articlebutton"], ["designsrow", "designbutton"], ["reportsrow", "reportsbutton"]]
 
     function filter(index) {
       document.getElementById(rows[index][0]).style.display = "";
       document.getElementById(rows[index][1]).style.opacity = "0.8";
+
       if (index == 0) {
-        index = 1
-      } else {
-        index = 0
+        indices = [1, 2]
+      } else if (index == 1) {
+        indices = [0, 2]
       }
-      document.getElementById(rows[index][0]).style.display = "none";
-      document.getElementById(rows[index][1]).style.opacity = "1";
+      else {
+        indices = [0, 1]
+      }
+      for (var idx of indices) {
+        console.log(index, idx)
+        document.getElementById(rows[idx][0]).style.display = "none";
+        document.getElementById(rows[idx][1]).style.opacity = "1";
+      }
     }
   </script>
   <style>
@@ -276,11 +283,14 @@
           <div class="section-title">
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <button class="filterButton" id="articlebutton" style="opacity: 0.8" onclick="filter(0)">View Articles</button>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <button class="filterButton" id="designbutton" onclick="filter(1)">View Designs</button>
+            </div>
+            <div class="col-md-4">
+              <button class="filterButton" id="reportsbutton" onclick="filter(2)">View Reports/eBooks</button>
             </div>
           </div>
           <div id="articlesrow" class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
@@ -342,6 +352,7 @@
           <div id="designsrow" class="row portfolio-container" style="display:none" data-aos="fade-up" data-aos-delay="200">
             <script type="text/javascript">
               function createDesign(name, url) {
+                console.log(name, url)
                 const design = document.createElement("div");
                 design.classList.add(
                   "col-lg-4",
@@ -390,6 +401,7 @@
                 id +
                 "/gviz/tq?tqx=out:json&tq&gid=" +
                 gid;
+              console.log(url)
               fetch(url)
                 .then((response) => response.text())
                 .then((data) => {
@@ -398,6 +410,71 @@
                   ]["rows"];
                   for (var content of contents) {
                     createDesign(content["c"][0]["v"], content["c"][1]["v"]);
+                  }
+                });
+            </script>
+          </div>
+
+          <div id="reportsrow" class="row portfolio-container" style="display:none" data-aos="fade-up" data-aos-delay="200">
+            <script type="text/javascript">
+              function createReport(name, url) {
+                const report = document.createElement("div");
+                report.classList.add(
+                  "col-lg-4",
+                  "col-md-6",
+                  "portfolio-item"
+                );
+
+                const reportimg = document.createElement("div");
+                reportimg.className = "portfolio-wrap";
+                reportimg.style.width = "100%";
+                const imgitem = document.createElement("img");
+                reportimg.style.backgroundColor = "#113038";
+                reportimg.style.height = "150px"
+                reportimg.style.width = "270px"
+                reportimg.style.margin = "10px auto";
+                reportimg.style.padding = "20px 20px";
+                reportimg.style.display = "flex";
+                reportimg.style.justifyContent = "center";
+                reportimg.style.alignItems = "center";
+                imgitem.className = "portfolio-img"
+                imgitem.src = `assets/reportlogos/${name}.png`;
+
+                reportimg.appendChild(imgitem);
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.target = "_blank";
+
+                const title = document.createElement("h4");
+                title.style.textAlign = "center";
+                title.innerText = `All Designs (${name})`;
+
+                imgitem.appendChild(title);
+
+                link.appendChild(reportimg);
+
+                report.appendChild(link);
+
+                document.getElementById("reportsrow").appendChild(report);
+              }
+
+              var id = "1AdOSyD-5gWSJJbdF-In1Bzvh5rHngiQLQMpW5gHep8U";
+              var gid = "1001310710";
+              var url =
+                "https://docs.google.com/spreadsheets/d/" +
+                id +
+                "/gviz/tq?tqx=out:json&tq&gid=" +
+                gid;
+              console.log(url)
+              fetch(url)
+                .then((response) => response.text())
+                .then((data) => {
+                  var contents = JSON.parse(data.substring(47).slice(0, -2))[
+                    "table"
+                  ]["rows"];
+                  for (var content of contents) {
+                    createReport(content["c"][0]["v"], content["c"][1]["v"]);
                   }
                 });
             </script>
