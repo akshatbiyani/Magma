@@ -373,7 +373,11 @@
                 const designimg = document.createElement("div");
                 designimg.className = "portfolio-wrap";
                 designimg.style.width = "100%";
-                const imgitem = document.createElement("img");
+                designimg.style.textAlign = "center";
+                // const imgitem = document.createElement("img");
+                const imgitem = document.createElement("h3");
+                imgitem.innerHTML = name;
+                imgitem.style.color = "white";
                 designimg.style.backgroundColor = "#113038";
                 designimg.style.height = "150px"
                 designimg.style.width = "270px"
@@ -383,7 +387,7 @@
                 designimg.style.justifyContent = "center";
                 designimg.style.alignItems = "center";
                 imgitem.className = "portfolio-img"
-                imgitem.src = `assets/designlogos/${name}.png`;
+                // imgitem.src = `assets/designlogos/${name}.png`;
 
                 designimg.appendChild(imgitem);
 
@@ -391,11 +395,11 @@
                 link.href = url;
                 link.target = "_blank";
 
-                const title = document.createElement("h4");
-                title.style.textAlign = "center";
-                title.innerText = `All Designs (${name})`;
+                // const title = document.createElement("h4");
+                // title.style.textAlign = "center";
+                // title.innerText = `All Designs (${name})`;
 
-                imgitem.appendChild(title);
+                // imgitem.appendChild(title);
 
                 link.appendChild(designimg);
 
@@ -439,8 +443,10 @@
                 const designimg = document.createElement("div");
                 designimg.className = "portfolio-wrap";
                 designimg.style.width = "100%";
+                designimg.style.textAlign = "center";
                 const imgitem = document.createElement("h3");
                 imgitem.innerHTML = name;
+                imgitem.style.color = "white";
                 designimg.style.backgroundColor = "#113038";
                 designimg.style.height = "150px"
                 designimg.style.width = "270px"
@@ -449,7 +455,7 @@
                 designimg.style.display = "flex";
                 designimg.style.justifyContent = "center";
                 designimg.style.alignItems = "center";
-                // imgitem.className = "portfolio-img"
+                imgitem.className = "portfolio-img"
                 // imgitem.src = `assets/designlogos/${name}.png`;
 
                 designimg.appendChild(imgitem);
@@ -458,11 +464,11 @@
                 link.href = url;
                 link.target = "_blank";
 
-                const title = document.createElement("h4");
-                title.style.textAlign = "center";
-                title.innerText = `All Designs (${name})`;
+                // const title = document.createElement("h4");
+                // title.style.textAlign = "center";
+                // title.innerText = `All Designs (${name})`;
 
-                imgitem.appendChild(title);
+                // imgitem.appendChild(title);
 
                 link.appendChild(designimg);
 
