@@ -319,7 +319,9 @@
                 const imgitem = document.createElement("img");
                 imgitem.className = "portfolio-img"
                 imgitem.src = `assets/img/logonew/${name}.png`;
-              
+
+                articleimg.appendChild(imgitem);
+                
                 const link = document.createElement("a");
                 link.href = url;
                 link.target = "_blank";
@@ -437,9 +439,8 @@
                 const designimg = document.createElement("div");
                 designimg.className = "portfolio-wrap";
                 designimg.style.width = "100%";
-                const imgitem = document.createElement("H3");
-                const text = document.createTextNode(${name});
-                imgitem.appendChild(text);
+                const imgitem = document.createElement("h3");
+                imgitem.innerHTML = ${name};
                 designimg.style.backgroundColor = "#113038";
                 designimg.style.height = "150px"
                 designimg.style.width = "270px"
