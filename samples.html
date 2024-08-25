@@ -371,9 +371,7 @@
                 const designimg = document.createElement("div");
                 designimg.className = "portfolio-wrap";
                 designimg.style.width = "100%";
-                const imgitem = document.createElement("H3");
-                const text = document.createTextNode(${name});
-                imgitem.appendChild(text);
+                const imgitem = document.createElement("img");
                 designimg.style.backgroundColor = "#113038";
                 designimg.style.height = "150px"
                 designimg.style.width = "270px"
@@ -382,8 +380,8 @@
                 designimg.style.display = "flex";
                 designimg.style.justifyContent = "center";
                 designimg.style.alignItems = "center";
-                // imgitem.className = "portfolio-img"
-                // imgitem.src = `assets/designlogos/${name}.png`;
+                imgitem.className = "portfolio-img"
+                imgitem.src = `assets/designlogos/${name}.png`;
 
                 designimg.appendChild(imgitem);
 
